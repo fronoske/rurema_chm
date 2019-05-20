@@ -1,6 +1,7 @@
 ## 最新のるりまドキュメントからchmをビルドする / Build chm for latest rurema document
 
-実行環境
+### 実行環境
+OS
 - Windows
 
 必要なツール
@@ -15,7 +16,10 @@
 > cd rurema_chm
 ```
 
-### arairait版bitclust レポジトリをclone（すでにレポジトリがあれば pull）
+### arairait版bitclust レポジトリをclone（すでにレポジトリがあればpull）
+
+arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_command.rb を加工している（巻末を参照）
+
 ```
 > git clone https://github.com/arairait/bitclust.git
 または
@@ -23,7 +27,7 @@
 > git pull
 ```
 
-### 本家bitclustのコミットをマージしてpush（他の人は不要）
+### 本家bitclustのコミットをマージ
 ```
 > git remote add upstream https://github.com/rurema/bitclust.git
 > git fetch upstream
@@ -31,7 +35,10 @@
 > git push
 ```
 
-★arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_command.rb を加工している（巻末を参照）
+### push（本リポジトリの開発者のみ。他の人は不要）
+```
+> git push
+```
 
 ### ドキュメントデータを取得
 ```
