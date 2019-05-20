@@ -11,8 +11,8 @@
 
 ### 環境を準備
 ```
-> mkdir rurema
-> cd rurema
+> git clone https://github.com/arairait/rurema_chm
+> cd rurema_chm
 ```
 
 ### arairait版bitclust レポジトリをclone（すでにレポジトリがあれば pull）
@@ -35,7 +35,7 @@
 
 ### ドキュメントデータを取得
 ```
-元のディレクトリに戻り
+rurema_chmディレクトリに戻り
 > git clone https://github.com/rurema/doctree.git rubydoc
 ```
 
@@ -61,7 +61,6 @@
 ```
 > "C:\Program Files (x86)\HTML Help Workshop\hhc.exe" chm\refm.hhp
 ```
-
 
 ### （備考）refm.hhcへのパッチ
 - chm/doc/index.html にもとづいて refm.hhc を出力する
