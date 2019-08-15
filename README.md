@@ -43,12 +43,13 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 
 ### ドキュメントデータを取得
 ```
-rurema_chmディレクトリに戻り
+(current dir: rurema_chm)
 > git clone https://github.com/rurema/doctree.git rubydoc
 ```
 
 ### gemsをインストール
 ```
+(current dir: rubydoc)
 > bundle install --path=vendor/bundle
 ```
 
