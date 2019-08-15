@@ -21,6 +21,7 @@ OS
 arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_command.rb を加工している（巻末を参照）
 
 ```
+(current dir: rurema_chm)
 > git clone https://github.com/arairait/bitclust.git
 または
 > cd bitclust
@@ -29,10 +30,10 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 
 ### 本家bitclustのコミットをマージ
 ```
+(current dir: rurema_chm/bitclust)
 > git remote add upstream https://github.com/rurema/bitclust.git
 > git fetch upstream
 > git merge upstream/master
-> git push
 ```
 
 ### push（本リポジトリの開発者のみ。他の人は不要）
