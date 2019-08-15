@@ -43,18 +43,19 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 
 ### ドキュメントデータを取得
 ```
-(current dir: rurema_chm)
+(current dir: 変わらず rurema_chm/bitclust)
 > git clone https://github.com/rurema/doctree.git rubydoc
 ```
 
 ### gemsをインストール
 ```
-(current dir: rubydoc)
+(current dir: 変わらず rurema_chm/bitclust)
 > bundle install --path=vendor/bundle
 ```
 
 ### DB生成
 ```
+(current dir: 変わらず rurema_chm/bitclust)
 > bundle exec bitclust -d ./db init encoding=utf-8 version=2.6.3
 > bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
 （"singleton object class not implemented yet" というワーニングが出るが無視）
@@ -62,12 +63,14 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 
 ### chm 素材作成
 ```
+(current dir: 変わらず rurema_chm/bitclust)
 > if exist chm rmdir /S /Q chm
 > bundle exec bitclust -d ./db chm -o ./chm
 ```
 
 ### Windows で HWS 実行
 ```
+(current dir: 変わらず rurema_chm/bitclust)
 > "C:\Program Files (x86)\HTML Help Workshop\hhc.exe" chm\refm.hhp
 ```
 
