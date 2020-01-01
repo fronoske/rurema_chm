@@ -23,7 +23,8 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 ```
 (current dir: rurema_chm)
 > git clone https://github.com/arairait/bitclust.git
-または
+> cd bitclust
+またはすでに clone していれば
 > cd bitclust
 > git pull
 ```
@@ -56,10 +57,11 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 ### DB生成
 ```
 (current dir: 変わらず rurema_chm/bitclust)
-> bundle exec bitclust -d ./db init encoding=utf-8 version=2.6.3
+> bundle exec bitclust -d ./db init encoding=utf-8 version=2.7.0
 > bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
-（"singleton object class not implemented yet" というワーニングが出るが無視）
+（"singleton object class not implemented yet" というワーニングが出るが無視してOK）
 ```
+これは少し時間がかかる
 
 ### chm 素材作成
 ```
@@ -67,6 +69,7 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 > if exist chm rmdir /S /Q chm
 > bundle exec bitclust -d ./db chm -o ./chm
 ```
+これもまあまあ時間がかかる
 
 ### Windows で HWS 実行
 ```
@@ -74,7 +77,7 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 > "C:\Program Files (x86)\HTML Help Workshop\hhc.exe" chm\refm.hhp
 ```
 
-### （備考）refm.hhcへのパッチ
+### 【備考】refm.hhcへのパッチ内容
 - chm/doc/index.html にもとづいて refm.hhc を出力する
 
 - index.html のためのルートノードを用意する
@@ -85,4 +88,5 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
   - 「このリファレンスマニュアルについて」を差し込む
 - CAPI は index.html から除外
 
-- TODO: ツリーのトップに「Ruby 2.x.x リファレンスマニュアル」を設置したい
+### TODO
+- ツリーのトップに「Ruby 2.x.x リファレンスマニュアル」を設置したい
