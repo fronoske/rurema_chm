@@ -54,6 +54,20 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 > bundle install --path=vendor/bundle
 ```
 
+### 2回め以降はリポジトリのupdateのみでOK
+```
+rurema_chm> git pull
+rurema_chm> cd bitclust
+rurema_chm\bitclust> git pull
+rurema_chm\bitclust> git fetch upstream
+rurema_chm\bitclust> git merge upstream/master
+rurema_chm\bitclust> cd rubydoc
+rurema_chm\bitclust\rubydoc> git pull
+rurema_chm\bitclust\rubydoc> cd ..
+rurema_chm\bitclust>
+```
+これ以降は毎回実行する
+
 ### DB生成
 ```
 (current dir: 変わらず rurema_chm/bitclust)
