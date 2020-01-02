@@ -13,6 +13,7 @@ jobs:
       with:
         ruby-version: '2.6.3'      
     - name: Run a multi-line script
+      shell: cmd
       run: |
         git clone https://github.com/fronoske/bitclust.git
         cd bitclust
