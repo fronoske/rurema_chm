@@ -10,23 +10,21 @@ OS
 - git
 - HTML Help Work Shop
 
+## 初めての場合
+
 ### 環境を準備
 ```
-> git clone https://github.com/arairait/rurema_chm
+> git clone https://github.com/fronoske/rurema_chm
 > cd rurema_chm
 ```
 
-### arairait版bitclust レポジトリをclone（すでにレポジトリがあればpull）
-
-arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_command.rb を加工している（巻末を参照）
+### fronoske版bitclust レポジトリをclone
+fronoske版はTOCの修正のため本家から lib\bitclust\subcommands\chm_command.rb を加工している（巻末を参照）
 
 ```
 (current dir: rurema_chm)
-> git clone https://github.com/arairait/bitclust.git
+> git clone https://github.com/fronoske/bitclust.git
 > cd bitclust
-またはすでに clone していれば
-> cd bitclust
-> git pull
 ```
 
 ### 本家bitclustのコミットをマージ
@@ -42,7 +40,7 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 > git push
 ```
 
-### ドキュメントデータを取得
+### ドキュメントデータを本家から取得
 ```
 (current dir: 変わらず rurema_chm/bitclust)
 > git clone https://github.com/rurema/doctree.git rubydoc
@@ -54,7 +52,8 @@ arairait版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 > bundle install --path=vendor/bundle
 ```
 
-### 2回め以降はリポジトリのupdateのみでOK
+## 2回め以降
+リポジトリのupdateのみでOK
 ```
 rurema_chm> git pull
 rurema_chm> cd bitclust
@@ -66,6 +65,8 @@ rurema_chm\bitclust\rubydoc> git pull
 rurema_chm\bitclust\rubydoc> cd ..
 rurema_chm\bitclust>
 ```
+
+## CHM生成
 これ以降は毎回実行する
 
 ### DB生成
