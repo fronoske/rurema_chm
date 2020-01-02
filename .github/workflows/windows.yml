@@ -1,11 +1,11 @@
 name: CI
 
-on:
-  schedule:
-  - cron: "0 2 * * 1-5"
-
+on: push
+# workflow → job → step → action
+# jobは並列、step は逐次実行
 jobs:
-  build:
+  build0:
+    name: build CHM
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
