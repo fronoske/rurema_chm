@@ -16,9 +16,9 @@ jobs:
       run: |
         git clone https://github.com/fronoske/bitclust.git
         cd bitclust
-        git remote add upstream https://github.com/rurema/bitclust.git
-        git fetch upstream
-        git merge upstream/master
+        rem git remote add upstream https://github.com/rurema/bitclust.git
+        rem git fetch upstream
+        rem git merge upstream/master
         git clone https://github.com/rurema/doctree.git rubydoc
         bundle install --path=vendor/bundle
         
