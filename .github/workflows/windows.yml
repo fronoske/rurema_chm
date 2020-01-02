@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  schedule:
+  - cron: "0 2 * * 1-5"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6.3'      
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        git clone https://github.com/fronoske/bitclust.git
+        cd bitclust
+        bundle install --path=vendor/bundle
+        git remote add upstream https://github.com/rurema/bitclust.git
+        git fetch upstream
+        git merge upstream/master
+        git clone https://github.com/rurema/doctree.git rubydoc
+        
