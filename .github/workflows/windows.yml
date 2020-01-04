@@ -3,7 +3,7 @@ env:
   TARGET_RUBY_VERSION: 2.7.0
 on:
   push:
-    paths: '.github/workflows/windows.yml'
+    paths: '.github/workflows/windowsyml'
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
@@ -57,16 +57,16 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
+          files: dist/ruby-refm.chm
+          name: v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
           release_name: v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
           draft: false
           prerelease: false
           body: |
             target Ruby Manual version: v${{env.TARGET_RUBY_VERSION}}
             build date: ${{steps.current-time.outputs.formattedTime}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
