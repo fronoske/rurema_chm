@@ -57,8 +57,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload ruby-refm.chm as artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: ruby-refm
-          path: dist
