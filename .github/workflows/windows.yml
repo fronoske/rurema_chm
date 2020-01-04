@@ -3,7 +3,7 @@ env:
   TARGET_RUBY_VERSION: 2.7.0
 on:
   push:
-    paths: '.github/workflows/a.yml'
+    paths: '.github/workflows/windows.yml'
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
