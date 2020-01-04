@@ -1,6 +1,8 @@
 name: CI
 
-on: push
+on:
+  push:
+    paths: '.github/workflows/*.yml'
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
@@ -36,9 +38,15 @@ jobs:
       shell: cmd
       run: |
         hhc.exe ..\bitclust\chm\refm.hhp
-        mkdir ..\dist
         copy /y ..\bitclust\chm\refm.chm ..\dist\ruby-refm.chm
-    - name: Upload artifacts
+    - name: Commit and push ruby-refm.chm
+      working-directory: dist
+      shell: cmd
+      run: |
+        git add ruby-refm.chm
+        git commit ruby-refm.chm -m "update ruby-refm.chm"
+        git push
+    - name: Upload ruby-refm.chm as artifact
       uses: actions/upload-artifact@v1
       with:
         name: ruby-refm
