@@ -9,6 +9,8 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
     - name: Set up Ruby version
       uses: actions/setup-ruby@v1
       with:
@@ -34,5 +36,10 @@ jobs:
       shell: cmd
       run: |
         hhc.exe ..\bitclust\chm\refm.hhp
-        dir ..\bitclust\chm
-        
+        mkdir ..\dist
+        copy /y ..\bitclust\chm\refm.chm ..\dist\ruby-refm.chm
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: ruby-refm.chm
+        path: dist
