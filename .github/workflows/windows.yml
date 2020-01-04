@@ -13,25 +13,23 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.6.3'
-    - name: Clone bitclust and doctree
-      run: |
-        git clone https://github.com/fronoske/bitclust.git
-        cd bitclust
-        git clone https://github.com/rurema/doctree.git rubydoc
+    - name: Clone fronoske/bitclust
+      run:  git clone https://github.com/fronoske/bitclust.git
+    - name: Clone rurema/doctree
+      working-directory: bitclust
+      run: git clone https://github.com/rurema/doctree.git rubydoc
     - name: Set up bundler
-      run: |
-        cd bitclust
-        bundle install --path=vendor/bundle
+      working-directory: bitclust
+      run: bundle install --path=vendor/bundle
     - name: Run bitclust
+      working-directory: bitclust
       run: |
-        cd bitclust
         bundle exec bitclust -d ./db init encoding=utf-8 version=2.7.0
         bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
     - name: Generate source file for CHM
-      run: |
-        cd bitclust
-        bundle exec bitclust -d ./db chm -o ./chm
+      working-directory: bitclust
+      run: bundle exec bitclust -d ./db chm -o ./chm
     - name: Run HTML Help Workshop
-      run: |
-        cd hhw
-        hhc ..\bitclust\chm\refm.hhp
+      working-directory: hhw
+      shell: cmd
+      run: hhc.exe ..\bitclust\chm\refm.hhp
