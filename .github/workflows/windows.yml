@@ -34,5 +34,6 @@ jobs:
     - name: Run HTML Help Workshop
       run: |
         cd bitclust
+        dir chm
         ..\hhw\hhc.exe chm\refm.hhp
         
