@@ -32,4 +32,7 @@ jobs:
     - name: Run HTML Help Workshop
       working-directory: hhw
       shell: cmd
-      run: hhc.exe ..\bitclust\chm\refm.hhp
+      run: |
+        hhc.exe ..\bitclust\chm\refm.hhp
+        dir ..\bitclust\chm
+        
