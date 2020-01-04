@@ -41,10 +41,13 @@ jobs:
       working-directory: dist
       shell: cmd
       run: |
+        set YYYYMMDD=%DATE:/=-%
+        echo _%YYYYMMDD%_
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Actions"
         git add ruby-refm.chm
         git commit ruby-refm.chm -m "update ruby-refm.chm"
+        git tag %YYYYMMDD%
     - name: Push ruby-refm.chm
       uses: ad-m/github-push-action@master
       with:
