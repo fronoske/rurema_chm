@@ -3,7 +3,7 @@ env:
   TARGET_RUBY_VERSION: 2.7.0
 on:
   push:
-    paths: '.github/workflows/*.yml'
+    paths: '.github/workflows/a.yml'
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
@@ -43,15 +43,15 @@ jobs:
         shell: cmd
         run: |
           hhc.exe ..\bitclust\chm\refm.hhp
-          copy /y ..\bitclust\chm\refm.chm ..\dist\ruby-refm-${{env.TARGET_RUBY_VERSION}}.chm
+          copy /y ..\bitclust\chm\refm.chm ..\dist\ruby-refm.chm
       - name: Commit ruby-refm.chm
         working-directory: dist
         shell: cmd
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
-          git add ruby-refm-${{env.TARGET_RUBY_VERSION}}.chm
-          git commit ruby-refm-${{env.TARGET_RUBY_VERSION}}.chm -m "update ruby-refm.chm"
+          git add ruby-refm.chm
+          git commit ruby-refm.chm -m "update ruby-refm.chm"
           git tag v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
       - name: Push to github
         uses: ad-m/github-push-action@master
