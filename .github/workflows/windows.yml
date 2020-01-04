@@ -33,7 +33,6 @@ jobs:
         bundle exec bitclust -d ./db chm -o ./chm
     - name: Run HTML Help Workshop
       run: |
-        cd bitclust
-        dir chm
-        ..\hhw\hhc.exe chm\refm.hhp
+        cd hhw
+        hhc.exe ..\bitclust\chm\refm.hhp
         
