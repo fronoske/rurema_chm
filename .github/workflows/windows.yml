@@ -37,16 +37,18 @@ jobs:
       run: |
         hhc.exe ..\bitclust\chm\refm.hhp
         copy /y ..\bitclust\chm\refm.chm ..\dist\ruby-refm.chm
-    - name: Commit and push ruby-refm.chm
+    - name: Commit ruby-refm.chm
       working-directory: dist
       shell: cmd
       run: |
-        git config --global user.name "fronoske"
-        git config --global user.email "{{ secrets.MAIL }}"
-        git remote set-url origin https://fronoske@${{ secrets.GITHUB_TOKEN }}@github.com/fronoske/rurema_chm.git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Actions"
         git add ruby-refm.chm
         git commit ruby-refm.chm -m "update ruby-refm.chm"
-        git push
+    - name: Push ruby-refm.chm
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload ruby-refm.chm as artifact
       uses: actions/upload-artifact@v1
       with:
