@@ -9,10 +9,25 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Set up Ruby version  
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.6.3'      
-    - name: Biuld CHM
-      shell: cmd
-      run: build-chm.cmd
-      
+    - name: Clone bitclust and doctree
+      run: |
+        git clone https://github.com/fronoske/bitclust.git
+        cd bitclust
+        git clone https://github.com/rurema/doctree.git rubydoc
+    - name: Set up bundler
+      run: bundle install --path=vendor/bundle
+    - name: Run bitclust
+      run: |
+        bundle exec bitclust -d ./db init encoding=utf-8 version=2.7.0
+        echo finish bundle exec bitclust init
+        bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
+        echo finish bundle exec bitclust update
+    - name: Generate source file for CHM
+      run: |
+        bundle exec bitclust -d ./db chm -o ./chm
+        echo finish bundle exec bitclust chm
+  
