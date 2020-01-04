@@ -1,12 +1,13 @@
 name: CI
-
+env:
+  TARGET_RUBY_VERSION: 2.7.0
 on:
   push:
     paths: '.github/workflows/*.yml'
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
-  build0:
+  job1:
     name: build CHM
     runs-on: windows-latest
     steps:
@@ -32,8 +33,7 @@ jobs:
       - name: Run bitclust
         working-directory: bitclust
         run: |
-          echo ${{ steps.current-time.outputs.formattedTime }}
-          bundle exec bitclust -d ./db init encoding=utf-8 version=2.7.0
+          bundle exec bitclust -d ./db init encoding=utf-8 version=${{env.TARGET_RUBY_VERSION}}
           bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
       - name: Generate source file for CHM
         working-directory: bitclust
@@ -52,7 +52,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add ruby-refm.chm
           git commit ruby-refm.chm -m "update ruby-refm.chm"
-          git tag ${{ steps.current-time.outputs.formattedTime }}
+          git tag v${{env.TARGET_RUBY_VERSION}}/${{steps.current-time.outputs.formattedTime}}
       - name: Push ruby-refm.chm
         uses: ad-m/github-push-action@master
         with:
