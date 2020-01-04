@@ -41,5 +41,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: ruby-refm.chm
+        name: ruby-refm
         path: dist
