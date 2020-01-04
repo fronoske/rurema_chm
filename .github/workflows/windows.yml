@@ -43,6 +43,9 @@ jobs:
       working-directory: dist
       shell: cmd
       run: |
+        git config --global user.name "fronoske"
+        git config --global user.email "{{ secrets.MAIL }}"
+        git remote set-url origin https://fronoske@${{ secrets.GITHUB_TOKEN }}@github.com/fronoske/rurema_chm.git
         git add ruby-refm.chm
         git commit ruby-refm.chm -m "update ruby-refm.chm"
         git push
