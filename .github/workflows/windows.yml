@@ -34,7 +34,7 @@ jobs:
       - name: Run bitclust
         working-directory: bitclust
         run: |
-          bundle exec bitclust -d ./db init encoding=utf-8 version=${{env.TARGET_RUBY_VERSION}}
+          bundle exec bitclust -d ./db init encoding=utf-8 version=${{ env.TARGET_RUBY_VERSION }}
           bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
       - name: Generate source files for CHM
         working-directory: bitclust
@@ -49,7 +49,7 @@ jobs:
         working-directory: dist
         shell: cmd
         env:
-          TAG_NAME: v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
+          TAG_NAME: v${{ env.TARGET_RUBY_VERSION }}-${{ steps.current-time.outputs.formattedTime }}
         run: |
           7z.exe a ruby-refm-%TAG_NAME%.zip ruby-refm.chm
           git config --local user.email "action@github.com"
@@ -62,17 +62,17 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
-        id: create_release
+        id: create-release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
+          TAG_NAME: v${{ env.TARGET_RUBY_VERSION }}-${{ steps.current-time.outputs.formattedTime }}
         with:
-          tag_name: ${{env.TAG_NAME}}
-          release_name: Ruby Reference Manual v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}
+          tag_name: ${{ steps.create-release.env.TAG_NAME }}
+          release_name: Ruby Reference Manual ${{ steps.create-release.env.TAG_NAME }}
           body: |
-            target Ruby version: v${{env.TARGET_RUBY_VERSION}}
-            build date: ${{steps.current-time.outputs.formattedTime}}
+            target Ruby version: v${{ env.TARGET_RUBY_VERSION }}
+            build date: ${{ steps.current-time.outputs.formattedTime }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
@@ -80,9 +80,9 @@ jobs:
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ZIP_NAME: ruby-refm-v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}.zip
+          ZIP_NAME: ruby-refm-v${{ env.TARGET_RUBY_VERSION }}-${{ steps.current-time.outputs.formattedTime }}.zip
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: dist/${{ env.ZIP_NAME }}
-          asset_name: ${{ env.ZIP_NAME }}
+          upload_url: ${{ steps.create-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: dist/${{ steps.upload-release-asset.env.ZIP_NAME }}
+          asset_name: ${{ steps.upload-release-asset.env.ZIP_NAME }}
           asset_content_type: application/zip
