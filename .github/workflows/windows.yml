@@ -49,7 +49,7 @@ jobs:
         working-directory: dist
         shell: cmd
         run: |
-          zip ruby-refm-v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}.zip ruby-refm.chm
+          7z.exe a ruby-refm-v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}.zip ruby-refm.chm
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           git add ruby-refm.chm
@@ -79,6 +79,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: dist/ruby-refm.zip
-          asset_name: ruby-refm.zip
+          asset_path: dist/ruby-refm-v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}.zip
+          asset_name: ruby-refm-v${{env.TARGET_RUBY_VERSION}}-${{steps.current-time.outputs.formattedTime}}.zip
           asset_content_type: application/zip
