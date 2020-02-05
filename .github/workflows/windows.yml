@@ -4,7 +4,7 @@ env:
   TARGET_RUBY_VERSION: 2.7.0
 on:
   push:
-    paths: '.github/workflows/windows-.yml'
+    paths: '.github/workflows/windows.yml'
   schedule:
     - cron: '17 0 1 * *'
 # workflow → job → step → action
