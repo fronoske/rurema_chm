@@ -24,7 +24,7 @@ jobs:
       - name: Set up Ruby version
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.6.3'
+          ruby-version: '2.6.x'
       - name: Clone fronoske/bitclust
         run:  git clone https://github.com/fronoske/bitclust.git
       - name: Clone rurema/doctree
