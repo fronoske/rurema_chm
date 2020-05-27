@@ -2,7 +2,7 @@
 name: CI
 env:
   TARGET_RUBY_VERSION: 2.7.0
-  RUBYOPT: -W:no-deprecated -W:no-experimental
+  RUBYOPT: -W0
 on:
   push:
     paths: '.github/workflows/windows.yml'
