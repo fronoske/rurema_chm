@@ -34,11 +34,15 @@ jobs:
         working-directory: bitclust
         run: bundle install --path=vendor/bundle
       - name: Run bitclust
+        env:
+          RUBYOPT: '-W:no-deprecated -W:no-experimental'
         working-directory: bitclust
         run: |
           bundle exec bitclust -d ./db init encoding=utf-8 version=${{ env.TARGET_RUBY_VERSION }}
           bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
       - name: Generate source files for CHM
+        env:
+          RUBYOPT: '-W:no-deprecated -W:no-experimental'
         working-directory: bitclust
         run: bundle exec bitclust -d ./db chm -o ./chm
       - name: Run HTML Help Workshop
