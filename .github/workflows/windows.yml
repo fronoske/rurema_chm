@@ -8,6 +8,8 @@ on:
     paths: '.github/workflows/windows.yml'
   schedule:
     - cron: '17 0 1 * *'
+  milestone:
+    types: [created]
 # workflow → job → step → action
 # jobは並列、step は逐次実行
 jobs:
