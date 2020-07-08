@@ -108,3 +108,5 @@ rurema_chm\bitclust>
 
 ### TODO
 - ツリーのトップに「Ruby 2.x.x リファレンスマニュアル」を設置したい
+- TOC から Errorno::* をなくしたい
+- 今の[るりま](https://docs.ruby-lang.org/ja/latest/class/Array.html) のようにページ先頭に目次を置きたい
