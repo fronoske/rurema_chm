@@ -35,7 +35,7 @@ fronoske版はTOCの修正のため本家から lib\bitclust\subcommands\chm_com
 (current dir: rurema_chm/bitclust)
 > git remote add upstream https://github.com/rurema/bitclust.git
 > git fetch upstream
-> git merge upstream/master
+> git merge upstream/master （fast-forward ができなかったら --no-ff オプションを付与する）
 ```
 
 ### push（本リポジトリの開発者のみ。他の人は不要）
