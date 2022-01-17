@@ -25,19 +25,15 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
       - name: Set up Ruby version
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1.0'
+          ruby-version: 3.1
+          bundler-cache: true
       - name: Clone fronoske/bitclust
         run:  git clone https://github.com/fronoske/bitclust.git
       - name: Clone rurema/doctree
         working-directory: bitclust
         run: git clone https://github.com/rurema/doctree.git rubydoc
-      - name: Set up bundler
-        working-directory: bitclust
-        run: |
-          bundle config set --local path 'vendor/bundle'
-          bundle install
       - name: Run bitclust
         working-directory: bitclust
         run: |
