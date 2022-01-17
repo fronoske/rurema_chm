@@ -1,7 +1,7 @@
 
 name: CI
 env:
-  TARGET_RUBY_VERSION: 3.0.0
+  TARGET_RUBY_VERSION: 3.1.0
   RUBYOPT: -W0
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       - name: Set up Ruby version
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.7.x'
+          ruby-version: '3.1.x'
       - name: Clone fronoske/bitclust
         run:  git clone https://github.com/fronoske/bitclust.git
       - name: Clone rurema/doctree
@@ -35,7 +35,9 @@ jobs:
         run: git clone https://github.com/rurema/doctree.git rubydoc
       - name: Set up bundler
         working-directory: bitclust
-        run: bundle install --path=vendor/bundle
+        run: |
+          bundle config set --local path 'vendor/bundle'
+          bundle install
       - name: Run bitclust
         working-directory: bitclust
         run: |
