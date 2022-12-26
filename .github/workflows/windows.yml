@@ -18,10 +18,11 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Get current time
-        uses: srfrnk/current-time@master
+        uses: josStorer/get-current-time@v2.0.2
         id: current-time
         with:
           format: YYYYMMDD
+          utcOffset: "+09:00"
       - name: Checkout this repository
         uses: actions/checkout@v2
       - name: Set up Ruby version
