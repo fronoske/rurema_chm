@@ -4,6 +4,7 @@ env:
   TARGET_RUBY_VERSION: 3.2
   RUBYOPT: -W0
 on:
+  workflow_dispatch:
   push:
     paths: '.github/workflows/windows.yml'
   schedule:
