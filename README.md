@@ -1,5 +1,6 @@
 ## 最新のるりまドキュメントからchmをビルドする / Build chm for latest rurema document
 
+> **Note**
 > Github Actionsによって毎月定期的にCHMビルドしてこのリポジトリに置くようにしました。\
 > 生成したCHMはReleasesからダウンロードできます。 
 
@@ -75,7 +76,7 @@ rurema_chm\bitclust>
 ### DB生成
 ```
 (current dir: 変わらず rurema_chm/bitclust)
-> bundle exec bitclust -d ./db init encoding=utf-8 version=2.7.0
+> bundle exec bitclust -d ./db init encoding=utf-8 version=3.2
 > bundle exec bitclust -d ./db update --stdlibtree=./rubydoc/refm/api/src
 （"singleton object class not implemented yet" というワーニングが出るが無視してOK）
 ```
@@ -107,6 +108,6 @@ rurema_chm\bitclust>
 - CAPI は index.html から除外
 
 ### TODO
-- ツリーのトップに「Ruby 2.x.x リファレンスマニュアル」を設置したい
-- TOC から Errorno::* をなくしたい
+- ツリーのトップに「Ruby 3.x リファレンスマニュアル」を設置したい
+- TOC から Errorno::* をなくしたい →【済】
 - 今の[るりま](https://docs.ruby-lang.org/ja/latest/class/Array.html) のようにページ先頭に目次を置きたい
