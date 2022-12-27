@@ -1,6 +1,7 @@
 ## 最新のるりまドキュメントからchmをビルドする / Build chm for latest rurema document
 
 > **Note**
+> 
 > Github Actionsによって毎月定期的にCHMビルドしてこのリポジトリに置くようにしました。\
 > 生成したCHMはReleasesからダウンロードできます。 
 
